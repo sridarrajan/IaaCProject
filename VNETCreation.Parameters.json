@@ -29,15 +29,21 @@
           "subnetname": "GatewaySubnet",
           "subnetprefix": "10.0.4.0/27"
         }
+        
       ]
+
     },
+
     "Department": {
       "value": "Accounts"
     },
+
     "ApplicationName": {
       "value": "PowerBI"
     },
+
     "Owner": {
       "value": "Matt"
     }
   }
+}
