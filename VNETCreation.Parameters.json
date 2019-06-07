@@ -6,7 +6,7 @@
       'value': 'EastUS2'
     },
     'vnetName': {
-      'value': 'EastUS2HUB'
+      'value': 'EastUS2Hub'
     },
     'addressPrefix': {
       'value': '10.0.0.0/16'
