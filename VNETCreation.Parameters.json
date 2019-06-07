@@ -1,44 +1,43 @@
 {
-  '$schema': 'https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#',
-  'contentVersion': '1.0.0.0',
-  'parameters': {
-    'location': {
-      'value': 'EastUS2'
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "EastUS2"
     },
-    'vnetName': {
-      'value': 'EastUS2Hub'
+    "vnetName": {
+      "value": "EastUS2Hub"
     },
-    'addressPrefix': {
-      'value': '10.0.0.0/16'
+    "addressPrefix": {
+      "value": "10.0.0.0/16"
     },
-    'subnetConfig': {
-      'value': [
+    "subnetConfig": {
+      "value": [
         {
-          'subnetname': 'DMZ',
-          'subnetprefix': '10.0.1.0/24'
+          "subnetname": "DMZ",
+          "subnetprefix": "10.0.1.0/24"
         },
         {
-          'subnetname': 'Security',
-          'subnetprefix': '10.0.2.0/24'
+          "subnetname": "Security",
+          "subnetprefix": "10.0.2.0/24"
         },
         {
-          'subnetname': 'Management',
-          'subnetprefix': '10.0.3.0/24'
+          "subnetname": "Management",
+          "subnetprefix": "10.0.3.0/24"
         },
         {
-          'subnetname': 'GatewaySubnet',
-          'subnetprefix': '10.0.4.0/27'
+          "subnetname": "GatewaySubnet",
+          "subnetprefix": "10.0.4.0/27"
         }
       ]
     },
-    'Department': {
-      'value': 'Accounts'
+    "Department": {
+      "value": "Accounts"
     },
-    'ApplicationName': {
-      'value': 'PowerBI'
+    "ApplicationName": {
+      "value": "PowerBI"
     },
-    'Owner': {
-      'value': 'Matt'
+    "Owner": {
+      "value": "Matt"
     }
   }
-}
