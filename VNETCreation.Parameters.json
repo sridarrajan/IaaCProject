@@ -22,7 +22,7 @@
           "subnetprefix": "10.0.2.0/24"
         },
         {
-          "subnetname": "Management",
+          "subnetname": "ManagemenT",
           "subnetprefix": "10.0.3.0/24"
         },
         {
