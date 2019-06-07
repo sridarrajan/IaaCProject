@@ -1,0 +1,101 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "Department": {
+      "type": "string",
+      "defaultValue": "MyDepartment",
+      "metadata": {
+        "description": "Department Tag"
+      }
+    },
+    "ApplicationName": {
+      "type": "string",
+      "defaultValue": "Application Name",
+      "metadata": {
+        "description": "ApplicationTag"
+      }
+    },
+    "Owner": {
+      "type": "string",
+      "defaultValue": "OwnerName",
+      "metadata": {
+        "description": "OwnerTag"
+      }
+    },
+    "vnetName": {
+      "type": "string"
+    },
+    "addressPrefix": {
+      "type": "string"
+    },
+    "subnetConfig": {
+      "type": "array"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[concat(parameters('subnetConfig')[copyindex()].subnetName, '-nsg')]",
+      "location": "[parameters('location')]",
+      "copy": {
+        "name": "nsgloop",
+        "count": "[length(parameters('subnetConfig'))]"
+      }
+    },
+    {
+      "apiVersion": "2018-05-01",
+      "name": "apply-nsg-to-subnet",
+      "type": "Microsoft.Resources/deployments",
+      "dependsOn": [
+        "nsgloop"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "apiVersion": "2018-12-01",
+              "location": "[parameters('location')]",
+              "tags": {
+                "Department": "[parameters('Department')]",
+                "Application": "[parameters('ApplicationName')]",
+                "Owner": "[parameters('Owner')]"
+              },
+              "name": "[parameters('vnetName')]",
+              "properties": {
+                "addressSpace": {
+                  "addressPrefixes": [
+                    "[parameters('addressPrefix')]"
+                  ]
+                },
+                "copy": [
+                  {
+                    "name": "subnets",
+                    "count": "[length(parameters('subnetConfig'))]",
+                    "input": {
+                      "name": "[parameters('subnetConfig')[copyIndex('subnets')].subnetName]",
+                      "properties": {
+                        "addressPrefix": "[parameters('subnetConfig')[copyIndex('subnets')].subnetPrefix]",
+                        "networkSecurityGroup": {
+                          "id": "[concat(resourceId('Microsoft.Network/networkSecurityGroups', parameters('subnetConfig')[copyIndex('subnets')].subnetName), '-nsg')]"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "type": "Microsoft.Network/virtualNetworks"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
