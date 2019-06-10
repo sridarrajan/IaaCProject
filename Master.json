@@ -124,8 +124,8 @@
   },
   "variables": {
 
-    "vnettemplateUrl": "https://sarojrepo.blob.core.windows.net/repoabc/VNETCreation.json",
-    "keyvaulttemplateUrl": "https://sarojrepo.blob.core.windows.net/repoabc/KeyVaultDeploy.json"
+    "vnettemplateUrl": "D:\a\r1\a\_IaaCProject\VNETCreation.json",
+    "keyvaulttemplateUrl": "D:\a\r1\a\_IaaCProject\KeyVaultDeploy.json"
 
   },
   "resources": [
