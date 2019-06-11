@@ -124,8 +124,8 @@
   },
   "variables": {
 
-    "vnettemplateUrl": "D:\a\r1\a\_IaaCProject\VNETCreation.json",
-    "keyvaulttemplateUrl": "D:\a\r1\a\_IaaCProject\KeyVaultDeploy.json"
+    "vnettemplateUrl": "D:\\a\\r1\\a\\_IaaCProject\\VNETCreation.json",
+    "keyvaulttemplateUrl": "D:\\a\\r1\\a\\_IaaCProject\\KeyVaultDeploy.json"
 
   },
   "resources": [
