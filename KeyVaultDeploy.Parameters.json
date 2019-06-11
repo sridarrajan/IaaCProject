@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "keyVaultName": {
+      "value": "EastUS2HubKeyVault"
+    },
+    "objectId": {
+      "value": "c0f33096-5481-4d42-a30a-aa8bd66e2331"
+    },
+    "skuName": {
+      "value": "Premium"
+    }
+
+  }
+}
